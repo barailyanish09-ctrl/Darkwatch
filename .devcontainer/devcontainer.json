@@ -1,0 +1,33 @@
+{
+  "name": "DarkWatch - Dark Web Awareness Tool",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {
+      "version": "latest",
+      "noVncVersion": "1.4.0",
+      "password": "darkwatch",
+      "webPort": "6080",
+      "vncPort": "5901"
+    }
+  },
+  "postCreateCommand": "pip install --break-system-packages tk 2>/dev/null; sudo apt-get install -y python3-tk 2>/dev/null || true",
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": {
+      "label": "Desktop GUI (DarkWatch)",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.pylint"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python3",
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}
